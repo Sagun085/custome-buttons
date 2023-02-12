@@ -4,12 +4,22 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "build": "npm run build:lib && npm run build:style",
+    "lint": "vue-cli-service lint",
+    "build:lib": "vue-cli-service build --target lib --name custom-buttons src/index.js",
+    "build:style": "postcss src/styles/main.scss"
   },
+  "main": "dist/custom-buttons.common.js",
+  "module": "dist/custom-buttons.umd.min.js",
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "core-js": "^3.8.3",
-    "vue": "^2.6.14"
+    "postcss": "^8.4.21",
+    "postcss-cli": "^10.1.0",
+    "vue": "^2.6.14",
+    "vuetify": "^2.6.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
@@ -21,7 +31,9 @@
     "eslint-plugin-vue": "^8.0.3",
     "sass": "^1.32.7",
     "sass-loader": "^12.0.0",
-    "vue-template-compiler": "^2.6.14"
+    "vue-cli-plugin-vuetify": "~2.5.8",
+    "vue-template-compiler": "^2.6.14",
+    "vuetify-loader": "^1.7.0"
   },
   "eslintConfig": {
     "root": true,
